@@ -1,0 +1,146 @@
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    
+    hamburger.addEventListener('click', function() {
+      navLinks.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    });
+  
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', function() {
+        navLinks.classList.remove('active');
+        hamburger.classList.remove('active');
+      });
+    });
+  
+    // Sticky header on scroll
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('.sticky-header');
+      header.classList.toggle('sticky', window.scrollY > 0);
+    });
+  
+    // Animate skill bars on scroll
+    const skillBars = document.querySelectorAll('.skill-level');
+    
+    function animateSkillBars() {
+      skillBars.forEach(bar => {
+        const level = bar.getAttribute('data-level');
+        bar.style.width = level + '%';
+      });
+    }
+  
+    // Only animate when skills section is in view
+    const skillsSection = document.getElementById('skills');
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        animateSkillBars();
+        observer.unobserve(skillsSection);
+      }
+    }, { threshold: 0.5 });
+  
+    observer.observe(skillsSection);
+  
+    // Animate stats counting
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    function animateStats() {
+      statNumbers.forEach(stat => {
+        const target = parseInt(stat.getAttribute('data-count'));
+        const duration = 2000;
+        const start = 0;
+        const increment = target / (duration / 16);
+        let current = start;
+        
+        const timer = setInterval(() => {
+          current += increment;
+          stat.textContent = Math.floor(current);
+          
+          if (current >= target) {
+            stat.textContent = target + '+';
+            clearInterval(timer);
+          }
+        }, 16);
+      });
+    }
+  
+    // Only animate when about section is in view
+    const aboutSection = document.getElementById('about');
+    const aboutObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        animateStats();
+        aboutObserver.unobserve(aboutSection);
+      }
+    }, { threshold: 0.5 });
+  
+    aboutObserver.observe(aboutSection);
+  
+    // Project filtering
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        // Remove active class from all buttons
+        filterBtns.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        this.classList.add('active');
+        
+        const filter = this.getAttribute('data-filter');
+        
+        projectCards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  
+    // Form submission
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+    
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+      
+      if (name && email && message) {
+        formStatus.textContent = 'Thank you! Your message has been sent.';
+        formStatus.style.color = '#2ecc71';
+        this.reset();
+        
+        // Simulate form submission (in a real scenario, you would use AJAX)
+        setTimeout(() => {
+          formStatus.textContent = '';
+        }, 5000);
+      } else {
+        formStatus.textContent = 'Please fill in all required fields.';
+        formStatus.style.color = '#e74c3c';
+      }
+    });
+  
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  });

@@ -1,0 +1,136 @@
+body {
+    /* font-family: Arial, sans-serif; */
+    font-family: "Playwrite AU SA", serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.skip-link {
+    position: absolute;
+    top: 10px; /* Permanent position */
+    left: 10px;
+    background: #333;
+    color: #fff;
+    padding: 8px 15px;
+    text-decoration: none;
+    z-index: 100;
+   
+}
+
+
+
+/* Header styling */
+header {
+    background-color: #6200ea;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+header img {
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+/* Navigation styles */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #3f007a;
+    padding: 10px 0;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Main content styles */
+main {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+main p {
+    background-color: rgb(240, 248, 255);
+    /* Alice Blue */
+    color: rgb(33, 37, 41);
+    /* Dark text for better contrast */
+    margin-bottom: 20px;
+
+    padding: 10px;
+    /* Add padding for spacing inside the background */
+    border-radius: 5px;
+    /* Round the corners of the background */
+}
+
+
+main img {
+    display: block;
+    margin: 10px auto;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Image gallery styles */
+div.image-gallery {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 10px;
+    overflow-x: auto;
+    background-color: yellow;
+    /* Background color for the entire image gallery */
+    padding: 10px;
+    /* Add padding around the gallery */
+    border-radius: 10px;
+    /* Optional: Round corners of the gallery background */
+}
+
+div.image-gallery img {
+    margin: 0;
+    border: 2px solid #ddd;
+    /* Maintain the border color */
+    border-radius: 5px;
+    /* Keep the rounded corners for the images */
+    background-color: transparent;
+    /* Ensure the background color does not affect the image */
+    transition: transform 0.3s;
+}
+
+div.image-gallery img:hover {
+    transform: scale(1.1);
+}
+
+
+
+/* Footer styles */
+footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
