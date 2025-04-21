@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Introduction</title>
+    <style>
+        /* Basic styling */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2em;
+        }
+        
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #3498db;
+            margin-bottom: 20px;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            margin: 30px 0;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+        }
+        
+        .bio-section {
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        .interests-section ul {
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .interests-section li {
+            background-color: #3498db;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+        
+        .contact-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .social-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        .social-link:hover {
+            color: #2980b9;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        
+        /* Media queries for responsive design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sabahat Ali</h1>
+            <p class="subtitle">Web Development Student</p>
+        </header>
+        
+        <div class="profile-section">
+            <img src="images/my pic.jpg" alt="Profile Picture" class="profile-image">
+            <p>Hello! I'm excited to meet everyone in this course.</p>
+        </div>
+        
+       
+        
+        <div class="bio-section">
+            <h2>About Me</h2>
+            <p>I'm a passionate web development student with a background in graphic design. I've always been fascinated by the intersection of design and technology, which led me to pursue web development.</p>
+            <p>Currently, I'm focused on learning front-end development, particularly HTML, CSS, and JavaScript. I hope to expand my skills to include frameworks like React in the future.</p>
+        </div>
+        
+        <div class="interests-section">
+            <h2>My Interests</h2>
+            <p>When I'm not coding, you can find me:</p>
+            <ul>
+                <li>Photography</li>
+                <li>Hiking</li>
+                <li>Reading</li>
+                <li>UI/UX Design</li>
+                <li>Video Editing</li>
+            </ul>
+        </div>
+        
+        <div class="goals-section">
+            <h2>Course Goals</h2>
+            <p>Through this course, I hope to:</p>
+            <ol>
+                <li>Build a solid foundation in web development principles</li>
+                <li>Create a portfolio of projects that showcase my skills</li>
+                <li>Connect with like-minded peers for future collaborations</li>
+                <li>Gain confidence in building responsive, interactive websites</li>
+            </ol>
+        </div>
+        
+        <div class="contact-section">
+            <h2>Let's Connect</h2>
+            <p>I'm looking forward to collaborating with you all!</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/mynetwork/grow/" class="social-link">LinkedIn</a>
+                <a href="https://github.com/copilot" class="social-link">GitHub</a>
+             
+            </div>
+        </div>
+        
+        <footer>
+            <p>Created for Web Development Course Introduction - April 2025</p>
+        </footer>
+    </div>
+</body>
+</html>

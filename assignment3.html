@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Wireframe Demo</title>
+    <style>
+        /* General Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        
+        .wireframe-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .view {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1, h2, h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .view-title {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        /* Wireframe Elements */
+        .wireframe-element {
+            background-color: #eee;
+            border: 2px dashed #ccc;
+            padding: 10px;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #777;
+        }
+        
+        .header {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            width: 100px;
+            height: 40px;
+        }
+        
+        .nav {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .nav-item {
+            width: 80px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        .content-section {
+            margin: 20px 0;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-gap: 15px;
+        }
+        
+        .project-item {
+            height: 200px;
+        }
+        
+        .footer {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Desktop Layout */
+        .desktop-view .projects-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .desktop-view .content-columns {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .desktop-view .content-column {
+            flex: 1;
+        }
+        
+        /* Mobile Layout */
+        .mobile-view {
+            max-width: 375px;
+            margin: 0 auto;
+        }
+        
+        .mobile-view .header {
+            flex-direction: column;
+            height: auto;
+            gap: 10px;
+            padding: 10px 0;
+        }
+        
+        .mobile-view .nav {
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        .mobile-view .nav-item {
+            width: 100%;
+        }
+        
+        .mobile-view .projects-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .mobile-view .content-columns {
+            flex-direction: column;
+        }
+        
+        /* Description Panel */
+        .description-panel {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="wireframe-container">
+        <h1>Portfolio Website Design Wireframes</h1>
+        
+        <!-- Desktop View -->
+        <div class="view desktop-view">
+            <h2 class="view-title">Desktop Layout</h2>
+            
+            <div class="wireframe-element header">
+                <div class="wireframe-element logo">Logo</div>
+                <div class="nav">
+                    <div class="wireframe-element nav-item">Home</div>
+                    <div class="wireframe-element nav-item">Projects</div>
+                    <div class="wireframe-element nav-item">About</div>
+                    <div class="wireframe-element nav-item">Contact</div>
+                </div>
+            </div>
+            
+            <div class="wireframe-element hero">
+                <h3>Hero Section / Introduction</h3>
+                <p>Headline and call-to-action</p>
+            </div>
+            
+            <div class="content-section">
+                <h3>Featured Projects</h3>
+                <div class="projects-grid">
+                    <div class="wireframe-element project-item">Project 1</div>
+                    <div class="wireframe-element project-item">Project 2</div>
+                    <div class="wireframe-element project-item">Project 3</div>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <h3>About Me Section</h3>
+                <div class="content-columns">
+                    <div class="content-column">
+                        <div class="wireframe-element">Profile Image</div>
+                    </div>
+                    <div class="content-column">
+                        <div class="wireframe-element" style="height: 200px;">Bio Text</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="wireframe-element footer">
+                Footer - Contact Info & Social Links
+            </div>
+        </div>
+        
+        <!-- Mobile View -->
+        <div class="view mobile-view">
+            <h2 class="view-title">Mobile Layout</h2>
+            
+            <div class="wireframe-element header">
+                <div class="wireframe-element logo">Logo</div>
+                <div class="wireframe-element" style="width: 40px; height: 40px;">☰</div>
+            </div>
+            
+            <!-- Mobile Menu (shown as collapsed) -->
+            <div class="nav" style="display: none;">
+                <div class="wireframe-element nav-item">Home</div>
+                <div class="wireframe-element nav-item">Projects</div>
+                <div class="wireframe-element nav-item">About</div>
+                <div class="wireframe-element nav-item">Contact</div>
+            </div>
+            
+            <div class="wireframe-element hero">
+                <h3>Hero Section</h3>
+                <p>Condensed for mobile</p>
+            </div>
+            
+            <div class="content-section">
+                <h3>Featured Projects</h3>
+                <div class="projects-grid">
+                    <div class="wireframe-element project-item">Project 1</div>
+                    <div class="wireframe-element project-item">Project 2</div>
+                    <div class="wireframe-element project-item">Project 3</div>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <h3>About Me Section</h3>
+                <div class="wireframe-element" style="height: 150px;">Profile Image</div>
+                <div class="wireframe-element" style="height: 200px;">Bio Text</div>
+            </div>
+            
+            <div class="wireframe-element footer">
+                Footer
+            </div>
+        </div>
+        
+        <!-- Design Description -->
+        <div class="description-panel">
+            <h2>Design Description</h2>
+            <p>This wireframe demonstrates a responsive portfolio website design with distinct layouts for desktop and mobile devices:</p>
+            <br>
+            <h3>Desktop Layout Features:</h3>
+            <ul>
+                <li>Horizontal navigation menu with easy access to all sections</li>
+                <li>Three-column grid layout for featured projects to maximize screen space</li>
+                <li>Two-column layout for the About section with image and text side by side</li>
+                <li>Spacious footer with contact information and social links</li>
+            </ul>
+            <br>
+            <h3>Mobile Layout Adaptations:</h3>
+            <ul>
+                <li>Collapsed hamburger menu to save vertical space</li>
+                <li>Single column layout for all content sections</li>
+                <li>Stacked arrangement for profile image and bio text</li>
+                <li>Reduced padding and margins for efficient use of limited screen width</li>
+                <li>Projects displayed in a single column for easy scrolling</li>
+            </ul>
+            <br>
+            <p>The design prioritizes content hierarchy and user experience across different device sizes while maintaining a consistent visual identity. Navigation patterns are optimized for each viewing context, with touch-friendly elements for mobile users.</p>
+        </div>
+    </div>
+</body>
+</html>
