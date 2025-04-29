@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --sidebar-width: 250px;
+            --sidebar-bg: #343a40;
+            --sidebar-color: #fff;
+            --sidebar-active-bg: #007bff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+        
+        #sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background: var(--sidebar-bg);
+            color: var(--sidebar-color);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        
+        #main-content {
+            margin-left: var(--sidebar-width);
+            padding: 20px;
+            transition: all 0.3s;
+        }
+        
+        .sidebar-header {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .sidebar-menu {
+            padding: 0;
+            list-style: none;
+        }
+        
+        .sidebar-menu li {
+            padding: 10px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .sidebar-menu li a {
+            color: var(--sidebar-color);
+            text-decoration: none;
+            display: block;
+        }
+        
+        .sidebar-menu li a i {
+            margin-right: 10px;
+        }
+        
+        .sidebar-menu li:hover, .sidebar-menu li.active {
+            background: var(--sidebar-active-bg);
+        }
+        
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .card-header {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #eee;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            #sidebar {
+                margin-left: -250px;
+            }
+            
+            #main-content {
+                margin-left: 0;
+            }
+            
+            #sidebar.active {
+                margin-left: 0;
+            }
+            
+            #main-content.active {
+                margin-left: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <div class="sidebar-header text-center">
+                <h4>Admin Dashboard</h4>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li class="active">
+                    <a href="#dashboard" data-section="dashboard">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="#apply" data-section="apply">
+                        <i class="fas fa-edit"></i> Apply
+                    </a>
+                </li>
+                <li>
+                    <a href="#complain" data-section="complain">
+                        <i class="fas fa-exclamation-circle"></i> Complain
+                    </a>
+                </li>
+                <li>
+                    <a href="#complain-against-police" data-section="complain-against-police">
+                        <i class="fas fa-shield-alt"></i> Complain Against Police
+                    </a>
+                </li>
+                <li>
+                    <a href="#application-status" data-section="application-status">
+                        <i class="fas fa-tasks"></i> Application Status
+                    </a>
+                </li>
+                <li>
+                    <a href="#gallery" data-section="gallery">
+                        <i class="fas fa-images"></i> Gallery
+                    </a>
+                </li>
+                <li>
+                    <a href="#slider" data-section="slider">
+                        <i class="fas fa-sliders-h"></i> Slider
+                    </a>
+                </li>
+                <li>
+                    <a href="#profile" data-section="profile">
+                        <i class="fas fa-user"></i> Profile
+                    </a>
+                </li>
+                <li>
+                    <a href="#logout">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Main Content -->
+        <div id="main-content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+                <div class="container-fluid">
+                    <button class="btn btn-primary d-lg-none" id="sidebarToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    
+                    <div class="navbar-brand ms-3">Welcome, Admin</div>
+                    
+                    <div class="d-flex">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                                <i class="fas fa-cog"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i> Profile</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i> Settings</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            
+            <!-- Dashboard Content -->
+            <div id="dashboard-section" class="content-section">
+                <h2 class="mb-4">Dashboard Overview</h2>
+                
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Total Applications</h5>
+                                <h2 class="card-text">1,245</h2>
+                                <p class="text-success"><i class="fas fa-arrow-up"></i> 12% from last month</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Pending Complaints</h5>
+                                <h2 class="card-text">87</h2>
+                                <p class="text-danger"><i class="fas fa-arrow-up"></i> 5% from last week</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Police Complaints</h5>
+                                <h2 class="card-text">32</h2>
+                                <p class="text-success"><i class="fas fa-arrow-down"></i> 8% from last week</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Gallery Items</h5>
+                                <h2 class="card-text">156</h2>
+                                <p class="text-success"><i class="fas fa-arrow-up"></i> 3 new today</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row mt-4">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">
+                                Recent Applications
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th>Type</th>
+                                                <th>Date</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>#1001</td>
+                                                <td>John Doe</td>
+                                                <td>License</td>
+                                                <td>2023-05-15</td>
+                                                <td><span class="badge bg-warning">Pending</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>#1002</td>
+                                                <td>Jane Smith</td>
+                                                <td>Permit</td>
+                                                <td>2023-05-14</td>
+                                                <td><span class="badge bg-success">Approved</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>#1003</td>
+                                                <td>Robert Johnson</td>
+                                                <td>Complaint</td>
+                                                <td>2023-05-14</td>
+                                                <td><span class="badge bg-danger">Rejected</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>#1004</td>
+                                                <td>Sarah Williams</td>
+                                                <td>License</td>
+                                                <td>2023-05-13</td>
+                                                <td><span class="badge bg-info">In Review</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                Activity Log
+                            </div>
+                            <div class="card-body">
+                                <div class="activity-feed">
+                                    <div class="feed-item">
+                                        <div class="feed-date">Today, 10:45 AM</div>
+                                        <div class="feed-content">New complaint registered by user #4521</div>
+                                    </div>
+                                    <div class="feed-item">
+                                        <div class="feed-date">Today, 09:30 AM</div>
+                                        <div class="feed-content">Application #1002 approved by admin</div>
+                                    </div>
+                                    <div class="feed-item">
+                                        <div class="feed-date">Today, 08:15 AM</div>
+                                        <div class="feed-content">3 new images added to gallery</div>
+                                    </div>
+                                    <div class="feed-item">
+                                        <div class="feed-date">Yesterday, 5:30 PM</div>
+                                        <div class="feed-content">System maintenance completed</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Other sections (initially hidden) -->
+            <div id="apply-section" class="content-section" style="display: none;">
+                <h2>Apply Section</h2>
+                <!-- Apply content goes here -->
+            </div>
+            
+            <div id="complain-section" class="content-section" style="display: none;">
+                <h2>Complain Section</h2>
+                <!-- Complain content goes here -->
+            </div>
+            
+            <div id="complain-against-police-section" class="content-section" style="display: none;">
+                <h2>Complain Against Police Section</h2>
+                <!-- Complain against police content goes here -->
+            </div>
+            
+            <div id="application-status-section" class="content-section" style="display: none;">
+                <h2>Application Status Section</h2>
+                <!-- Application status content goes here -->
+            </div>
+            
+            <div id="gallery-section" class="content-section" style="display: none;">
+                <h2>Gallery Section</h2>
+                <!-- Gallery content goes here -->
+            </div>
+            
+            <div id="slider-section" class="content-section" style="display: none;">
+                <h2>Slider Section</h2>
+                <!-- Slider content goes here -->
+            </div>
+            
+            <div id="profile-section" class="content-section" style="display: none;">
+                <h2>Profile Section</h2>
+                <!-- Profile content goes here -->
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="btn btn-primary">Logout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Toggle sidebar on mobile
+        document.getElementById('sidebarToggle').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('main-content').classList.toggle('active');
+        });
+        
+        // Handle sidebar menu clicks
+        document.querySelectorAll('.sidebar-menu a').forEach(item => {
+            item.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#logout') {
+                    // Handle logout
+                    alert('Logging out...');
+                    return;
+                }
+                
+                e.preventDefault();
+                
+                // Remove active class from all menu items
+                document.querySelectorAll('.sidebar-menu li').forEach(li => {
+                    li.classList.remove('active');
+                });
+                
+                // Add active class to clicked menu item
+                this.parentElement.classList.add('active');
+                
+                // Hide all content sections
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                
+                // Show the selected content section
+                const sectionId = this.getAttribute('data-section') + '-section';
+                document.getElementById(sectionId).style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
